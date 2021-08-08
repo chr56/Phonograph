@@ -8,7 +8,7 @@
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:orientation="horizontal"
     android:paddingEnd="?android:attr/scrollbarSize"
-    android:paddingRight="?android:attr/scrollbarSize"
+    android:background="?android:attr/selectableItemBackground"
     tools:ignore="RtlSymmetry,UnusedAttribute">
 
     <ImageView
@@ -16,8 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/ate_preference_inset"
-        android:layout_marginStart="@dimen/ate_preference_inset"
+        android:layout_marginStart="@dimen/pref_preference_inset"
         tools:ignore="ContentDescription" />
 
     <RelativeLayout
@@ -26,36 +25,32 @@
         android:layout_gravity="start|center_vertical"
         android:layout_marginBottom="12dip"
         android:layout_marginEnd="6dip"
-        android:layout_marginLeft="@dimen/ate_preference_inset"
-        android:layout_marginRight="6dip"
-        android:layout_marginStart="@dimen/ate_preference_inset"
+        android:layout_marginStart="@dimen/pref_preference_inset"
         android:layout_marginTop="12dip"
         android:layout_weight="1">
 
-        <com.kabouzeid.appthemehelper.common.views.ATEPrimaryTextView
+        <com.kabouzeid.gramophone.views.basic.PrimaryTextViewX
             android:id="@android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:fontFamily="sans-serif"
             android:singleLine="true"
-            android:textSize="@dimen/ate_default_textsize_subheading"
+            android:textSize="@dimen/pref_default_textsize_subheading"
             tools:text="Title" />
 
-        <com.kabouzeid.appthemehelper.common.views.ATESecondaryTextView
+        <com.kabouzeid.gramophone.views.basic.SecondaryTextViewX
             android:id="@android:id/summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@android:id/title"
             android:layout_alignStart="@android:id/title"
             android:layout_below="@android:id/title"
             android:layout_marginTop="2dp"
             android:fontFamily="sans-serif"
             android:maxLines="4"
-            android:textSize="@dimen/ate_default_textsize_body"
+            android:textSize="@dimen/pref_default_textsize_body"
             tools:text="Summary" />
 
     </RelativeLayout>

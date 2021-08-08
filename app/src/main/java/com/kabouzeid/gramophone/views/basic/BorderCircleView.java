@@ -1,4 +1,4 @@
-package com.kabouzeid.appthemehelper.common.prefs;
+package com.kabouzeid.gramophone.views.basic;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,11 +7,12 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import com.kabouzeid.appthemehelper.R;
+import androidx.core.content.ContextCompat;
+
+import com.kabouzeid.gramophone.R;
 
 public class BorderCircleView extends FrameLayout {
 
@@ -34,7 +35,7 @@ public class BorderCircleView extends FrameLayout {
 
     public BorderCircleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mCheck = ContextCompat.getDrawable(context, R.drawable.ate_check);
+        mCheck = ContextCompat.getDrawable(context, R.drawable.ic_check);
         borderWidth = (int) getResources().getDimension(R.dimen.ate_circleview_border);
 
         paint = new Paint();

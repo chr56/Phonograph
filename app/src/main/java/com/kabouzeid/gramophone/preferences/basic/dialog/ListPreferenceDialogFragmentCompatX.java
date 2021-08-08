@@ -1,29 +1,30 @@
-package com.kabouzeid.appthemehelper.common.prefs.supportv7.dialogs;
+package com.kabouzeid.gramophone.preferences.basic.dialog;
 
 import android.os.Bundle;
-import androidx.preference.ListPreference;
 import android.view.View;
+
+import androidx.preference.ListPreference;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.kabouzeid.appthemehelper.common.prefs.supportv7.ATEListPreference;
+import com.kabouzeid.gramophone.preferences.basic.ListPreferenceX;
 
 /**
  * @author Karim Abou Zeid (kabouzeid)
  */
-public class ATEListPreferenceDialogFragmentCompat extends ATEPreferenceDialogFragment implements MaterialDialog.ListCallbackSingleChoice {
+public class ListPreferenceDialogFragmentCompatX extends PreferenceDialogFragmentX implements MaterialDialog.ListCallbackSingleChoice {
     private int mClickedDialogEntryIndex;
 
-    public static ATEListPreferenceDialogFragmentCompat newInstance(String key) {
-        final ATEListPreferenceDialogFragmentCompat fragment = new ATEListPreferenceDialogFragmentCompat();
+    public static ListPreferenceDialogFragmentCompatX newInstance(String key) {
+        final ListPreferenceDialogFragmentCompatX fragment = new ListPreferenceDialogFragmentCompatX();
         final Bundle b = new Bundle(1);
         b.putString(ARG_KEY, key);
         fragment.setArguments(b);
         return fragment;
     }
 
-    private ATEListPreference getListPreference() {
-        return (ATEListPreference) getPreference();
+    private ListPreferenceX getListPreference() {
+        return (ListPreferenceX) getPreference();
     }
 
     @Override

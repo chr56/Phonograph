@@ -1,38 +1,39 @@
-package com.kabouzeid.appthemehelper.common.prefs.supportv7;
+package com.kabouzeid.gramophone.preferences.basic;
 
 import android.content.Context;
-import androidx.preference.ListPreference;
 import android.util.AttributeSet;
 
-import com.kabouzeid.appthemehelper.R;
+import androidx.preference.ListPreference;
+
+import com.kabouzeid.gramophone.R;
 
 /**
  * @author Aidan Follestad (afollestad)
  */
-public class ATEListPreference extends ListPreference {
+public class ListPreferenceX extends ListPreference {
 
-    public ATEListPreference(Context context) {
+    public ListPreferenceX(Context context) {
         super(context);
         init(context, null);
     }
 
-    public ATEListPreference(Context context, AttributeSet attrs) {
+    public ListPreferenceX(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public ATEListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ListPreferenceX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
 
-    public ATEListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ListPreferenceX(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
-        setLayoutResource(R.layout.ate_preference_custom_support);
+        setLayoutResource(R.layout.x_preference);
         if (getSummary() == null || getSummary().toString().trim().isEmpty())
             setSummary("%s");
     }

@@ -1,42 +1,43 @@
-package com.kabouzeid.appthemehelper.common.prefs.supportv7;
+package com.kabouzeid.gramophone.preferences.basic;
 
 import android.content.Context;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.kabouzeid.appthemehelper.R;
-import com.kabouzeid.appthemehelper.common.prefs.BorderCircleView;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
+
+import com.kabouzeid.gramophone.R;
+import com.kabouzeid.gramophone.views.basic.BorderCircleView;
 
 /**
  * @author Aidan Follestad (afollestad)
  */
-public class ATEColorPreference extends Preference {
+public class ColorPreferenceX extends Preference {
 
     private View mView;
     private int color;
     private int border;
 
-    public ATEColorPreference(Context context) {
+    public ColorPreferenceX(Context context) {
         this(context, null, 0);
         init(context, null);
     }
 
-    public ATEColorPreference(Context context, AttributeSet attrs) {
+    public ColorPreferenceX(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
         init(context, attrs);
     }
 
-    public ATEColorPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ColorPreferenceX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
 
     }
 
     private void init(Context context, AttributeSet attrs) {
-        setLayoutResource(R.layout.ate_preference_custom_support);
-        setWidgetLayoutResource(R.layout.ate_preference_color);
+        setLayoutResource(R.layout.x_preference);
+        setWidgetLayoutResource(R.layout.x_preference_color);
         setPersistent(false);
     }
 

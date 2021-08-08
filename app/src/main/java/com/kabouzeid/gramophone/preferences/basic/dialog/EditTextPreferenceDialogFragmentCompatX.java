@@ -1,28 +1,29 @@
-package com.kabouzeid.appthemehelper.common.prefs.supportv7.dialogs;
+package com.kabouzeid.gramophone.preferences.basic.dialog;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.kabouzeid.appthemehelper.common.prefs.supportv7.ATEEditTextPreference;
+import com.kabouzeid.gramophone.preferences.basic.EditTextPreferenceX;
 
 /**
  * @author Karim Abou Zeid (kabouzeid)
  */
-public class ATEEditTextPreferenceDialogFragmentCompat extends ATEPreferenceDialogFragment implements MaterialDialog.InputCallback {
+public class EditTextPreferenceDialogFragmentCompatX extends PreferenceDialogFragmentX implements MaterialDialog.InputCallback {
 
     private CharSequence input;
 
-    public static ATEEditTextPreferenceDialogFragmentCompat newInstance(String key) {
-        ATEEditTextPreferenceDialogFragmentCompat fragment = new ATEEditTextPreferenceDialogFragmentCompat();
+    public static EditTextPreferenceDialogFragmentCompatX newInstance(String key) {
+        EditTextPreferenceDialogFragmentCompatX fragment = new EditTextPreferenceDialogFragmentCompatX();
         Bundle b = new Bundle(1);
         b.putString(ARG_KEY, key);
         fragment.setArguments(b);
         return fragment;
     }
 
-    private ATEEditTextPreference getEditTextPreference() {
-        return (ATEEditTextPreference) getPreference();
+    private EditTextPreferenceX getEditTextPreference() {
+        return (EditTextPreferenceX) getPreference();
     }
 
     @Override

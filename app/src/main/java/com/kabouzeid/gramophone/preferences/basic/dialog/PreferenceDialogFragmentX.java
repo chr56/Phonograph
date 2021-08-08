@@ -1,15 +1,15 @@
-package com.kabouzeid.appthemehelper.common.prefs.supportv7.dialogs;
+package com.kabouzeid.gramophone.preferences.basic.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+import android.view.Window;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.DialogPreference;
-import android.view.Window;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -17,14 +17,14 @@ import com.afollestad.materialdialogs.MaterialDialog;
 /**
  * @author Karim Abou Zeid (kabouzeid)
  */
-public class ATEPreferenceDialogFragment extends DialogFragment implements MaterialDialog.SingleButtonCallback {
+public class PreferenceDialogFragmentX extends DialogFragment implements MaterialDialog.SingleButtonCallback {
     private DialogAction mWhichButtonClicked;
 
     protected static final String ARG_KEY = "key";
     private DialogPreference mPreference;
 
-    public static ATEPreferenceDialogFragment newInstance(String key) {
-        ATEPreferenceDialogFragment fragment = new ATEPreferenceDialogFragment();
+    public static PreferenceDialogFragmentX newInstance(String key) {
+        PreferenceDialogFragmentX fragment = new PreferenceDialogFragmentX();
         Bundle b = new Bundle(1);
         b.putString(ARG_KEY, key);
         fragment.setArguments(b);
