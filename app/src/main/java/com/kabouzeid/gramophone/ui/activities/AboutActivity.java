@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
-import com.kabouzeid.appthemehelper.ThemeStore;
 import com.kabouzeid.gramophone.R;
 import com.kabouzeid.gramophone.dialogs.ChangelogDialog;
 import com.kabouzeid.gramophone.ui.activities.base.AbsBaseActivity;
