@@ -81,7 +81,7 @@ public class GenreDetailActivity extends AbsSlidingMusicPanelActivity implements
     }
 
     private void setUpRecyclerView() {
-        ViewUtil.setUpFastScrollRecyclerViewColor(this, ((FastScrollRecyclerView) recyclerView), ThemeStore.accentColor(this));
+        ViewUtil.setUpFastScrollRecyclerViewColor(this, ((FastScrollRecyclerView) recyclerView), ThemeColor.accentColor(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new SongAdapter(this, new ArrayList<>(), R.layout.item_list, false, this);
@@ -131,7 +131,7 @@ public class GenreDetailActivity extends AbsSlidingMusicPanelActivity implements
         cab = new MaterialCab(this, R.id.cab_stub)
                 .setMenu(menu)
                 .setCloseDrawableRes(R.drawable.ic_close_white_24dp)
-                .setBackgroundColor(PhonographColorUtil.shiftBackgroundColorForLightText(ThemeStore.primaryColor(this)))
+                .setBackgroundColor(PhonographColorUtil.shiftBackgroundColorForLightText(ThemeColor.primaryColor(this)))
                 .start(callback);
         return cab;
     }

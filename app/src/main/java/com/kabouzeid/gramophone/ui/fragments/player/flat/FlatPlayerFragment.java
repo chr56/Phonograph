@@ -53,6 +53,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import chr_56.MDthemer.core.ThemeColor;
+import chr_56.MDthemer.util.ColorUtil;
 
 public class FlatPlayerFragment extends AbsPlayerFragment implements PlayerAlbumCoverFragment.Callbacks, SlidingUpPanelLayout.PanelSlideListener {
 
@@ -457,7 +458,7 @@ public class FlatPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(backgroundAnimator, statusBarAnimator);
 
-            if (!ATHUtil.isWindowBackgroundDark(fragment.getActivity())) {
+            if (!Util.isWindowBackgroundDark(fragment.getActivity())) {
                 int adjustedLastColor = ColorUtil.isColorLight(fragment.lastColor) ? ColorUtil.darkenColor(fragment.lastColor) : fragment.lastColor;
                 int adjustedNewColor = ColorUtil.isColorLight(newColor) ? ColorUtil.darkenColor(newColor) : newColor;
                 Animator subHeaderAnimator = ViewUtil.createTextColorTransition(fragment.playerQueueSubHeader, adjustedLastColor, adjustedNewColor);
