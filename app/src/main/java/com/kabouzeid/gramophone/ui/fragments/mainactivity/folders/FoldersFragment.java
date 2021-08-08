@@ -64,6 +64,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import chr_56.MDthemer.core.ThemeColor;
 import chr_56.MDthemer.core.activities.ThemeActivity;
+import chr_56.MDthemer.util.ToolbarThemer;
 
 public class FoldersFragment extends AbsMainActivityFragment implements MainActivity.MainActivityFragmentCallbacks, CabHolder, BreadCrumbLayout.SelectionCallback, SongFileAdapter.Callbacks, AppBarLayout.OnOffsetChangedListener, LoaderManager.LoaderCallbacks<List<File>> {
 
@@ -171,8 +172,8 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
         appbar.setBackgroundColor(primaryColor);
         toolbar.setBackgroundColor(primaryColor);
         breadCrumbs.setBackgroundColor(primaryColor);
-        breadCrumbs.setActivatedContentColor(ToolbarContentTintHelper.toolbarTitleColor(getActivity(), primaryColor));
-        breadCrumbs.setDeactivatedContentColor(ToolbarContentTintHelper.toolbarSubtitleColor(getActivity(), primaryColor));
+        breadCrumbs.setActivatedContentColor(ToolbarThemer.toolbarTitleColor(getActivity(), primaryColor));
+        breadCrumbs.setDeactivatedContentColor(ToolbarThemer.toolbarSubtitleColor(getActivity(), primaryColor));
     }
 
     private void setUpToolbar() {
@@ -248,13 +249,13 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_folders, menu);
-        ToolbarContentTintHelper.handleOnCreateOptionsMenu(getActivity(), toolbar, menu, ThemeActivity.getToolbarBackgroundColor(toolbar));
+        ToolbarThemer.setToolbarColorAuto(getActivity(), toolbar, ThemeActivity.getToolbarBackgroundColor(toolbar));
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        ToolbarContentTintHelper.handleOnPrepareOptionsMenu(getActivity(), toolbar);
+        ToolbarThemer.InternalToolbarContentTintUtil.applyOverflowMenuTint(getActivity(), toolbar,ThemeColor.accentColor(getActivity()));
     }
 
     public static final FileFilter AUDIO_FILE_FILTER = file -> !file.isHidden() && (file.isDirectory() ||

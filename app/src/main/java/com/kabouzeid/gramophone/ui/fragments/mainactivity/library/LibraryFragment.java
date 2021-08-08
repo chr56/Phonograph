@@ -46,6 +46,7 @@ import butterknife.Unbinder;
 import chr_56.MDthemer.core.ThemeColor;
 import chr_56.MDthemer.core.activities.ThemeActivity;
 import chr_56.MDthemer.util.TabLayoutUtil;
+import chr_56.MDthemer.util.ToolbarThemer;
 
 public class LibraryFragment extends AbsMainActivityFragment implements CabHolder, MainActivity.MainActivityFragmentCallbacks, ViewPager.OnPageChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -140,8 +141,8 @@ public class LibraryFragment extends AbsMainActivityFragment implements CabHolde
         tabs.setupWithViewPager(pager);
 
         int primaryColor = ThemeColor.primaryColor(getActivity());
-        int normalColor = ToolbarContentTintHelper.toolbarSubtitleColor(getActivity(), primaryColor);
-        int selectedColor = ToolbarContentTintHelper.toolbarTitleColor(getActivity(), primaryColor);
+        int normalColor = ToolbarThemer.toolbarSubtitleColor(getActivity(), primaryColor);
+        int selectedColor = ToolbarThemer.toolbarTitleColor(getActivity(), primaryColor);
         TabLayoutUtil.setTabIconColors(tabs, normalColor, selectedColor);
         tabs.setTabTextColors(normalColor, selectedColor);
         tabs.setSelectedTabIndicatorColor(ThemeColor.accentColor(getActivity()));
@@ -220,7 +221,7 @@ public class LibraryFragment extends AbsMainActivityFragment implements CabHolde
         }
         Activity activity = getActivity();
         if (activity == null) return;
-        ToolbarContentTintHelper.handleOnCreateOptionsMenu(getActivity(), toolbar, menu, ThemeActivity.getToolbarBackgroundColor(toolbar));
+        ToolbarThemer.setToolbarColorAuto(getActivity(), toolbar,  ThemeActivity.getToolbarBackgroundColor(toolbar));
     }
 
     @Override
@@ -228,7 +229,7 @@ public class LibraryFragment extends AbsMainActivityFragment implements CabHolde
         super.onPrepareOptionsMenu(menu);
         Activity activity = getActivity();
         if (activity == null) return;
-        ToolbarContentTintHelper.handleOnPrepareOptionsMenu(activity, toolbar);
+        ToolbarThemer.handleOnPrepareOptionsMenu(activity, toolbar);
     }
 
     @Override

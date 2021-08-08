@@ -37,6 +37,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import chr_56.MDthemer.util.ToolbarThemer;
 import chr_56.MDthemer.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -233,6 +234,6 @@ public class AlbumTagEditorActivity extends AbsTagEditorActivity implements Text
     @Override
     protected void setColors(int color) {
         super.setColors(color);
-        albumTitle.setTextColor(ToolbarContentTintHelper.toolbarTitleColor(this, color));
+        albumTitle.setTextColor(ToolbarThemer.toolbarTitleColor(this, color));
     }
 }

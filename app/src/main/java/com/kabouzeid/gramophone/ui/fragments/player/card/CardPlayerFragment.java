@@ -57,6 +57,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import chr_56.MDthemer.core.ThemeColor;
 import chr_56.MDthemer.util.ColorUtil;
+import chr_56.MDthemer.util.ToolbarThemer;
 
 public class CardPlayerFragment extends AbsPlayerFragment implements PlayerAlbumCoverFragment.Callbacks, SlidingUpPanelLayout.PanelSlideListener {
 
@@ -292,12 +293,12 @@ public class CardPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
                 Activity activity = getActivity();
                 if (activity != null) {
                     int res = isFavorite ? R.drawable.ic_favorite_white_24dp : R.drawable.ic_favorite_border_white_24dp;
-                    int color = ToolbarContentTintHelper.toolbarContentColor(activity, Color.TRANSPARENT);
+                    int color = ToolbarThemer.toolbarContentColor(activity, Color.TRANSPARENT);
                     Drawable drawable = ImageUtil.getTintedVectorDrawable(activity, res, color);
                     toolbar.getMenu().findItem(R.id.action_toggle_favorite)
                             .setIcon(drawable)
                             .setTitle(isFavorite ? getString(R.string.action_remove_from_favorites) : getString(R.string.action_add_to_favorites));
-                }`
+                }
             }
         }.execute(MusicPlayerRemote.getCurrentSong());
     }
@@ -335,7 +336,7 @@ public class CardPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
                     Activity activity = getActivity();
                     if (toolbar != null && activity != null)
                         if (toolbar.getMenu().findItem(R.id.action_show_lyrics) == null) {
-                            int color = ToolbarContentTintHelper.toolbarColor(activity, Color.TRANSPARENT);
+                            int color = ToolbarThemer.toolbarContentColor(activity, Color.TRANSPARENT);
                             Drawable drawable = ImageUtil.getTintedVectorDrawable(activity, R.drawable.ic_comment_text_outline_white_24dp, color);
                             toolbar.getMenu()
                                     .add(Menu.NONE, R.id.action_show_lyrics, Menu.NONE, R.string.action_show_lyrics)
