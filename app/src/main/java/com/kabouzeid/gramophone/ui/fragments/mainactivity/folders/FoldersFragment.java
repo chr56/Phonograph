@@ -30,9 +30,6 @@ import com.afollestad.materialcab.MaterialCab;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
-import com.kabouzeid.appthemehelper.ThemeStore;
-import com.kabouzeid.appthemehelper.common.ATHToolbarActivity;
-import com.kabouzeid.appthemehelper.util.ToolbarContentTintHelper;
 import com.kabouzeid.gramophone.R;
 import com.kabouzeid.gramophone.adapter.SongFileAdapter;
 import com.kabouzeid.gramophone.helper.MusicPlayerRemote;
@@ -65,6 +62,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import chr_56.MDthemer.core.ThemeColor;
 
 public class FoldersFragment extends AbsMainActivityFragment implements MainActivity.MainActivityFragmentCallbacks, CabHolder, BreadCrumbLayout.SelectionCallback, SongFileAdapter.Callbacks, AppBarLayout.OnOffsetChangedListener, LoaderManager.LoaderCallbacks<List<File>> {
 
@@ -168,7 +166,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
     }
 
     private void setUpAppbarColor() {
-        int primaryColor = ThemeStore.primaryColor(getActivity());
+        int primaryColor = ThemeColor.primaryColor(getActivity());
         appbar.setBackgroundColor(primaryColor);
         toolbar.setBackgroundColor(primaryColor);
         breadCrumbs.setBackgroundColor(primaryColor);
@@ -187,7 +185,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
     }
 
     private void setUpRecyclerView() {
-        ViewUtil.setUpFastScrollRecyclerViewColor(getActivity(), recyclerView, ThemeStore.accentColor(getActivity()));
+        ViewUtil.setUpFastScrollRecyclerViewColor(getActivity(), recyclerView, ThemeColor.accentColor(getActivity()));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -240,7 +238,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
         cab = new MaterialCab(getMainActivity(), R.id.cab_stub)
                 .setMenu(menuRes)
                 .setCloseDrawableRes(R.drawable.ic_close_white_24dp)
-                .setBackgroundColor(PhonographColorUtil.shiftBackgroundColorForLightText(ThemeStore.primaryColor(getActivity())))
+                .setBackgroundColor(PhonographColorUtil.shiftBackgroundColorForLightText(ThemeColor.primaryColor(getActivity())))
                 .start(callback);
         return cab;
     }
@@ -319,7 +317,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
                 } else {
                     Snackbar.make(coordinatorLayout, Html.fromHtml(String.format(getString(R.string.not_listed_in_media_store), canonicalFile.getName())), Snackbar.LENGTH_LONG)
                             .setAction(R.string.action_scan, v -> scanPaths(new String[]{canonicalFile.getPath()}))
-                            .setActionTextColor(ThemeStore.accentColor(getActivity()))
+                            .setActionTextColor(ThemeColor.accentColor(getActivity()))
                             .show();
                 }
             }).execute(new ListSongsAsyncTask.LoadingInfo(toList(canonicalFile.getParentFile()), fileFilter, getFileComparator()));
@@ -342,7 +340,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
                             }
                             scanPaths(paths);
                         })
-                        .setActionTextColor(ThemeStore.accentColor(getActivity()))
+                        .setActionTextColor(ThemeColor.accentColor(getActivity()))
                         .show();
             }
         }).execute(new ListSongsAsyncTask.LoadingInfo(files, AUDIO_FILE_FILTER, getFileComparator()));
@@ -418,7 +416,7 @@ public class FoldersFragment extends AbsMainActivityFragment implements MainActi
                             } else {
                                 Snackbar.make(coordinatorLayout, Html.fromHtml(String.format(getString(R.string.not_listed_in_media_store), file.getName())), Snackbar.LENGTH_LONG)
                                         .setAction(R.string.action_scan, v -> scanPaths(new String[]{FileUtil.safeGetCanonicalPath(file)}))
-                                        .setActionTextColor(ThemeStore.accentColor(getActivity()))
+                                        .setActionTextColor(ThemeColor.accentColor(getActivity()))
                                         .show();
                             }
                         }).execute(new ListSongsAsyncTask.LoadingInfo(toList(file), AUDIO_FILE_FILTER, getFileComparator()));

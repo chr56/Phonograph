@@ -24,8 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.kabouzeid.appthemehelper.ThemeStore;
-import com.kabouzeid.appthemehelper.util.TintHelper;
 import com.kabouzeid.gramophone.R;
 import com.kabouzeid.gramophone.misc.DialogAsyncTask;
 import com.kabouzeid.gramophone.ui.activities.base.AbsThemeActivity;
@@ -46,8 +44,11 @@ import java.lang.annotation.RetentionPolicy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import chr_56.MDthemer.core.BaseActivity;
+import chr_56.MDthemer.core.ThemeColor;
+import chr_56.MDthemer.util.TintHelper;
 
-public class BugReportActivity extends AbsThemeActivity {
+public class BugReportActivity extends BaseActivity {
 
     private static final int STATUS_BAD_CREDENTIALS = 401;
     private static final int STATUS_ISSUES_NOT_ENABLED = 410;
@@ -119,8 +120,8 @@ public class BugReportActivity extends AbsThemeActivity {
     }
 
     private void initViews() {
-        final int accentColor = ThemeStore.accentColor(this);
-        final int primaryColor = ThemeStore.primaryColor(this);
+        final int accentColor = ThemeColor.accentColor(this);
+        final int primaryColor = ThemeColor.primaryColor(this);
         toolbar.setBackgroundColor(primaryColor);
         setSupportActionBar(toolbar);
         //noinspection ConstantConditions

@@ -25,6 +25,7 @@ import com.kabouzeid.gramophone.ui.activities.intro.AppIntroActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import chr_56.MDthemer.core.ThemeColor;
 import de.psdev.licensesdialog.LicensesDialog;
 
 /**
@@ -119,7 +120,7 @@ public class AboutActivity extends AbsBaseActivity implements View.OnClickListen
     }
 
     private void setUpToolbar() {
-        toolbar.setBackgroundColor(ThemeStore.primaryColor(this));
+        toolbar.setBackgroundColor(ThemeColor.primaryColor(this));
         setSupportActionBar(toolbar);
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
