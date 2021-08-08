@@ -44,6 +44,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import chr_56.MDthemer.core.ThemeColor;
+import chr_56.MDthemer.core.activities.ThemeActivity;
 import chr_56.MDthemer.util.TabLayoutUtil;
 
 public class LibraryFragment extends AbsMainActivityFragment implements CabHolder, MainActivity.MainActivityFragmentCallbacks, ViewPager.OnPageChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
@@ -219,7 +220,7 @@ public class LibraryFragment extends AbsMainActivityFragment implements CabHolde
         }
         Activity activity = getActivity();
         if (activity == null) return;
-        ToolbarContentTintHelper.handleOnCreateOptionsMenu(getActivity(), toolbar, menu, ATHToolbarActivity.getToolbarBackgroundColor(toolbar));
+        ToolbarContentTintHelper.handleOnCreateOptionsMenu(getActivity(), toolbar, menu, ThemeActivity.getToolbarBackgroundColor(toolbar));
     }
 
     @Override

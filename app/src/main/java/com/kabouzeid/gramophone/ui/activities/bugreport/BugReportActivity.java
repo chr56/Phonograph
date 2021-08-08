@@ -44,11 +44,10 @@ import java.lang.annotation.RetentionPolicy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import chr_56.MDthemer.core.BaseActivity;
 import chr_56.MDthemer.core.ThemeColor;
 import chr_56.MDthemer.util.TintHelper;
 
-public class BugReportActivity extends BaseActivity {
+public class BugReportActivity extends AbsThemeActivity {
 
     private static final int STATUS_BAD_CREDENTIALS = 401;
     private static final int STATUS_ISSUES_NOT_ENABLED = 410;

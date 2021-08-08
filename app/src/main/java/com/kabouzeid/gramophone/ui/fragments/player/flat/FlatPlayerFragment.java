@@ -458,7 +458,7 @@ public class FlatPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
             AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(backgroundAnimator, statusBarAnimator);
 
-            if (!Util.isWindowBackgroundDark(fragment.getActivity())) {
+            if (!chr_56.MDthemer.util.Util.isWindowBackgroundDark(fragment.getActivity())) {
                 int adjustedLastColor = ColorUtil.isColorLight(fragment.lastColor) ? ColorUtil.darkenColor(fragment.lastColor) : fragment.lastColor;
                 int adjustedNewColor = ColorUtil.isColorLight(newColor) ? ColorUtil.darkenColor(newColor) : newColor;
                 Animator subHeaderAnimator = ViewUtil.createTextColorTransition(fragment.playerQueueSubHeader, adjustedLastColor, adjustedNewColor);
@@ -471,7 +471,7 @@ public class FlatPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
 
         @Override
         public void animateColorChange(int newColor) {
-            if (ATHUtil.isWindowBackgroundDark(fragment.getActivity())) {
+            if (chr_56.MDthemer.util.Util.isWindowBackgroundDark(fragment.getActivity())) {
                 fragment.playerQueueSubHeader.setTextColor(ThemeColor.textColorSecondary(fragment.getActivity()));
             }
         }
@@ -493,7 +493,7 @@ public class FlatPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
             currentSongViewHolder.separator.setVisibility(View.VISIBLE);
             currentSongViewHolder.shortSeparator.setVisibility(View.GONE);
             currentSongViewHolder.image.setScaleType(ImageView.ScaleType.CENTER);
-            currentSongViewHolder.image.setColorFilter(Util.resolveColor(fragment.getActivity(), R.attr.iconColor, ThemeColor.textColorSecondary(fragment.getActivity())), PorterDuff.Mode.SRC_IN);
+            currentSongViewHolder.image.setColorFilter(chr_56.MDthemer.util.Util.resolveColor(fragment.getActivity(), R.attr.iconColor, ThemeColor.textColorSecondary(fragment.getActivity())), PorterDuff.Mode.SRC_IN);
             currentSongViewHolder.image.setImageResource(R.drawable.ic_volume_up_white_24dp);
             currentSongViewHolder.itemView.setOnClickListener(v -> {
                 // toggle the panel

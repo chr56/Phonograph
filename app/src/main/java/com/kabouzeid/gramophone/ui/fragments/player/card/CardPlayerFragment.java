@@ -297,7 +297,7 @@ public class CardPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
                     toolbar.getMenu().findItem(R.id.action_toggle_favorite)
                             .setIcon(drawable)
                             .setTitle(isFavorite ? getString(R.string.action_remove_from_favorites) : getString(R.string.action_add_to_favorites));
-                }
+                }`
             }
         }.execute(MusicPlayerRemote.getCurrentSong());
     }
@@ -523,7 +523,7 @@ public class CardPlayerFragment extends AbsPlayerFragment implements PlayerAlbum
             currentSongViewHolder.separator.setVisibility(View.VISIBLE);
             currentSongViewHolder.shortSeparator.setVisibility(View.GONE);
             currentSongViewHolder.image.setScaleType(ImageView.ScaleType.CENTER);
-            currentSongViewHolder.image.setColorFilter(ATHUtil.resolveColor(fragment.getActivity(), R.attr.iconColor, ThemeColor.textColorSecondary(fragment.getActivity())), PorterDuff.Mode.SRC_IN);
+            currentSongViewHolder.image.setColorFilter(chr_56.MDthemer.util.Util.resolveColor(fragment.getActivity(), R.attr.iconColor, ThemeColor.textColorSecondary(fragment.getActivity())), PorterDuff.Mode.SRC_IN);
             currentSongViewHolder.image.setImageResource(R.drawable.ic_volume_up_white_24dp);
             currentSongViewHolder.itemView.setOnClickListener(v -> {
                 // toggle the panel
