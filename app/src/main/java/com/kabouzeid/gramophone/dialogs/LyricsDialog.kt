@@ -13,8 +13,8 @@ import com.kabouzeid.gramophone.model.lyrics.Lyrics
 class LyricsDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialDialog(activity as Context)
-                .title(text = requireArguments().getString("title")!!)
-                .message(text = requireArguments().getString("lyrics")!!)
+            .title(text = requireArguments().getString("title")!!)
+            .message(text = requireArguments().getString("lyrics")!!)
     }
 
     companion object {
