@@ -1,3 +1,8 @@
+**This repo is no longer available and abandoned, please go to [Phonograph Plus](https://github.com/chr56/Phonograph_Plus)**
+
+**该仓库已弃用,请前往 [Phonograph Plus](https://github.com/chr56/Phonograph_Plus)**
+
+
 # Phonograph Modified Version 
 [<img src="https://github.com/chr56/Phonograph/workflows/ci/badge.svg" alt="CI Status">](https://github.com/chr56/Phonograph/actions)
 
