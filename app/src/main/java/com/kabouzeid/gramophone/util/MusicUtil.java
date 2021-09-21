@@ -1,5 +1,6 @@
 package com.kabouzeid.gramophone.util;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -10,13 +11,13 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.kabouzeid.gramophone.R;
 import com.kabouzeid.gramophone.helper.MusicPlayerRemote;
@@ -27,7 +28,9 @@ import com.kabouzeid.gramophone.model.Artist;
 import com.kabouzeid.gramophone.model.Genre;
 import com.kabouzeid.gramophone.model.Playlist;
 import com.kabouzeid.gramophone.model.Song;
-import com.kabouzeid.gramophone.model.lyrics.AbsSynchronizedLyrics;
+import com.kabouzeid.gramophone.model.lyrics.AbsLyrics;
+import com.kabouzeid.gramophone.model.lyrics.LyricsParsed;
+import com.kabouzeid.gramophone.model.lyrics.LyricsParsedSynchronized;
 
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
@@ -37,6 +40,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -330,29 +334,29 @@ public class MusicUtil {
         return String.valueOf(musicMediaTitle.charAt(0)).toUpperCase();
     }
 
-    @Nullable
-    public static String getLyrics(Song song) {
-        String lyrics = null;
+    @NonNull
+    public static String readRawLyrics(Song song) throws Exception {
+        String rawLyrics = null;
 
         File file = new File(song.data);
 
         try {
-            lyrics = AudioFileIO.read(file).getTagOrCreateDefault().getFirst(FieldKey.LYRICS);
+            rawLyrics = AudioFileIO.read(file).getTagOrCreateDefault().getFirst(FieldKey.LYRICS);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if (lyrics == null || lyrics.trim().isEmpty() || !AbsSynchronizedLyrics.isSynchronized(lyrics)) {
+        if (rawLyrics == null || rawLyrics.trim().isEmpty()) {
             File dir = file.getAbsoluteFile().getParentFile();
 
             if (dir != null && dir.exists() && dir.isDirectory()) {
                 String format = ".*%s.*\\.(lrc|txt)";
                 String filename = Pattern.quote(FileUtil.stripExtension(file.getName()));
-                String songtitle = Pattern.quote(song.title);
+                String songTitle = Pattern.quote(song.title);
 
                 final List<Pattern> patterns = new ArrayList<>();
                 patterns.add(Pattern.compile(String.format(format, filename), Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE));
-                patterns.add(Pattern.compile(String.format(format, songtitle), Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE));
+                patterns.add(Pattern.compile(String.format(format, songTitle), Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE));
 
                 File[] files = dir.listFiles(f -> {
                     for (Pattern pattern : patterns) {
@@ -364,21 +368,50 @@ public class MusicUtil {
                 if (files != null && files.length > 0) {
                     for (File f : files) {
                         try {
-                            String newLyrics = FileUtil.read(f);
-                            if (newLyrics != null && !newLyrics.trim().isEmpty()) {
-                                if (AbsSynchronizedLyrics.isSynchronized(newLyrics)) {
-                                    return newLyrics;
-                                }
-                                lyrics = newLyrics;
+                            rawLyrics = FileUtil.read(f);
+                            if (!rawLyrics.trim().isEmpty()) {
+                                return rawLyrics;
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-            }
+            } else throw new Exception("NO_LYRICS");
         }
 
-        return lyrics;
+        if (rawLyrics == null || rawLyrics.isEmpty()) throw new Exception("NO_LYRICS");
+        return rawLyrics;
     }
+
+    public static int checkType(String raw){
+        Pattern LRC = Pattern.compile("(\\[.+\\])+.*",Pattern.MULTILINE);
+        if (LRC.matcher(raw).find()) {
+            return AbsLyrics.LRC;
+        } else {
+            return AbsLyrics.TXT;
+        }
+    }
+    public static AbsLyrics loadLyrics(String raw){
+        if (checkType(raw) == AbsLyrics.LRC){
+            return LyricsParsedSynchronized.parse(raw);
+        } else {
+            return LyricsParsed.parse(raw);
+        }
+    }
+
+    /**
+     * convert a timestamp to a readable String
+     * @param t timeStamp to parse (Unit: milliseconds)
+     * @return human-friendly time
+     */
+    @SuppressLint("DefaultLocale")
+    public static String  parseTimeStamp(int t){
+        long ms = t % 1000;
+        long s = (t % (1000*60)) / 1000;
+        long m = (t - s*1000 - ms) / (1000*60);
+        return String.format("%d:%02d.%03d",m ,s , ms);
+//        return m + ":" + s + "." + ms;
+    }
+
 }
